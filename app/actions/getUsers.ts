@@ -7,7 +7,6 @@ const getUsers = async () => {
   if (!session?.user?.email) {
     return [];
   }
-
   try {
     const users = await prisma.user.findMany({
       orderBy: {

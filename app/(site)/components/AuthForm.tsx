@@ -1,12 +1,10 @@
 'use client';
-
-import axios from "axios";
+ import axios from "axios";
 import { signIn, useSession } from 'next-auth/react';
 import { useCallback, useEffect, useState } from 'react';
 import { BsGithub, BsGoogle  } from 'react-icons/bs';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { useRouter } from "next/navigation";
-
 import Input from "@/app/components/inputs/Input";
 import AuthSocialButton from './AuthSocialButton';
 import Button from "@/app/components/Button";
@@ -19,7 +17,6 @@ const AuthForm = () => {
   const router = useRouter();
   const [variant, setVariant] = useState<Variant>('LOGIN');
   const [isLoading, setIsLoading] = useState(false);
-
   useEffect(() => {
     if (session?.status === 'authenticated') {
       router.push('/conversations')
@@ -49,20 +46,23 @@ const AuthForm = () => {
   });
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    setIsLoading(true);
   
-    if (variant === 'REGISTER') {
+    setIsLoading(true);
+    if (variant === 'REGISTER')
+     {
       axios.post('/api/register', data)
       .then(() => signIn('credentials', {
         ...data,
         redirect: false,
       }))
       .then((callback) => {
-        if (callback?.error) {
+        if 
+        (callback?.error) 
+        {
           toast.error('Invalid credentials!');
         }
-
-        if (callback?.ok) {
+        if (callback?.ok)
+         {
           router.push('/conversations')
         }
       })
