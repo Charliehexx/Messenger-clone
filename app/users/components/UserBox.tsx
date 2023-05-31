@@ -1,8 +1,8 @@
+'use client'
 import axios from "axios";
 import { useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
 import {  User } from "@prisma/client";
-
 import Avatar from "@/app/components/Avatar";
 import LoadingModal from "@/app/components/modals/LoadingModal";
 
@@ -15,12 +15,15 @@ const UserBox: React.FC<UserBoxProps> = ({
 }) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
-
+  console.log("da",data)
+  console.log({ userId: data.id })
   const handleClick = useCallback(() => {
     setIsLoading(true);
 
-    axios.post('/api/conversations', { userId: data.id })
+    axios.post('/api/conversations',{ userId: data.id }
+    )
     .then((data) => {
+      console.log("adi",data)
       router.push(`/conversations/${data.data.id}`);
     })
     .finally(() => setIsLoading(false));

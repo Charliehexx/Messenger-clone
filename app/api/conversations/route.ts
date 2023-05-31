@@ -16,7 +16,7 @@ export async function POST(
       members,
       name
     } = body;
-console.log(members)
+console.log("bou",body)
     if (!currentUser?.id || !currentUser?.email) {
       return new NextResponse('Unauthorized', { status: 400 });
     }

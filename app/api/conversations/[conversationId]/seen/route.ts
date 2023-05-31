@@ -37,7 +37,7 @@ export async function POST(
         users: true,
       },
     });
-
+console.log("null",conversation)
     if (!conversation) {
       return new NextResponse('Invalid ID', { status: 400 });
     }
