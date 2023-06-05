@@ -15,15 +15,12 @@ const UserBox: React.FC<UserBoxProps> = ({
 }) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
-  console.log("da",data)
-  console.log({ userId: data.id })
   const handleClick = useCallback(() => {
     setIsLoading(true);
 
     axios.post('/api/conversations',{ userId: data.id }
     )
     .then((data) => {
-      console.log("adi",data)
       router.push(`/conversations/${data.data.id}`);
     })
     .finally(() => setIsLoading(false));

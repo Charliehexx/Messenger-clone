@@ -16,7 +16,6 @@ export async function POST(
       members,
       name
     } = body;
-console.log("bou",body)
     if (!currentUser?.id || !currentUser?.email) {
       return new NextResponse('Unauthorized', { status: 400 });
     }
@@ -96,7 +95,7 @@ console.log("bou",body)
         users: true
       }
     });
-
+   console.log("HELLOID",newConversation)
     // Update all connections with new conversation
     newConversation.users.map((user) => {
       if (user.email) {
