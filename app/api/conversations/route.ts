@@ -95,7 +95,6 @@ export async function POST(
         users: true
       }
     });
-   console.log("HELLOID",newConversation)
     // Update all connections with new conversation
     newConversation.users.map((user) => {
       if (user.email) {
